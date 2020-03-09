@@ -18,6 +18,11 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { environment } from '../environments/environment';
+
 export function hljsLanguages() {
   return [{ name: 'json', func: json }];
 }
@@ -43,7 +48,9 @@ export function hljsLanguages() {
       languages: hljsLanguages
     }),
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase, 'fcc-book-trading'),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
